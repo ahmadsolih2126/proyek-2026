@@ -1,0 +1,18 @@
+<?php
+
+namespace App\Filament\Admin\Resources\AlatOlahragaResource\Widgets;
+
+use App\Models\AlatOlahraga;
+use Filament\Widgets\StatsOverviewWidget as BaseWidget;
+use Filament\Widgets\StatsOverviewWidget\Stat;
+
+class AlatStats extends BaseWidget
+{
+    protected function getStats(): array
+    {
+        return [
+            Stat::make('Total Jenis Alat', AlatOlahraga::count()),
+            Stat::make('Total Stok Barang', AlatOlahraga::sum('jumlah')),
+        ];
+    }
+}
